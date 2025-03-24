@@ -18,8 +18,25 @@ const Navbar = () => {
     en: ['Home', 'Services', 'Projects', 'Favorites']
   };
   
+  // 页面路径映射表 - 确保每个导航项都有对应的路径
+  const pathMap = {
+    '首页': '/',
+    'Home': '/',
+    '服务': '/services',
+    'Services': '/services',
+    '项目': '/projects',
+    'Projects': '/projects',
+    '喜好': '/favorites',
+    'Favorites': '/favorites'
+  };
+  
+  // 修改 getHref 函数确保它正确使用 pathMap
   const getHref = (item: string): string => {
-    if (item === '首页' || item === 'Home') return '/';
+    // 确认该项在映射表中存在
+    if (item in pathMap) {
+      return pathMap[item];
+    }
+    // 如果不在映射表中，则将英文转为小写作为路径（兜底方案）
     return `/${item.toLowerCase()}`;
   };
   
