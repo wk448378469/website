@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useLanguage } from './context/LanguageContext';
+import Footer from './components/Footer';
 
 export default function Home() {
   const { language } = useLanguage();
@@ -38,44 +39,47 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white px-4 py-8 md:py-16">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16">
-        {/* 左侧头像 - 更大的正方形带圆角 */}
-        <div className="w-56 h-56 md:w-80 md:h-80 flex-shrink-0 relative">
-          <Image
-            src="/aaa.png"
-            alt="Profile Avatar"
-            fill
-            className="rounded-2xl object-cover shadow-lg"
-            priority
-          />
-        </div>
-        
-        {/* 右侧文字区域 */}
-        <div className="flex-1">
-          <h1 className="text-2xl md:text-3xl font-bold text-[#384151] mb-4">
-            {content[language].name}
-          </h1>
+    <div className="min-h-screen bg-white flex flex-col">
+      <div className="flex-1 px-4 py-8 md:py-16">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16">
+          {/* 左侧头像 - 更大的正方形带圆角 */}
+          <div className="w-56 h-56 md:w-80 md:h-80 flex-shrink-0 relative">
+            <Image
+              src="/aaa.png"
+              alt="Profile Avatar"
+              fill
+              className="rounded-2xl object-cover shadow-lg"
+              priority
+            />
+          </div>
           
-          <ul className="mb-8 space-y-2 text-[#384151]">
-            {content[language].intro.map((item, index) => (
-              <li key={index} className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          
-          {/* 联系方式 - 标题与个人简介同样大小 */}
-          <div className="text-[#384151]">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#384151] mb-4">
-              {content[language].contact}
-            </h2>
-            <p className="mb-2">{content[language].wechat}</p>
-            <p>{content[language].email}</p>
+          {/* 右侧文字区域 */}
+          <div className="flex-1">
+            <h1 className="text-2xl md:text-3xl font-bold text-[#384151] mb-4">
+              {content[language].name}
+            </h1>
+            
+            <ul className="mb-8 space-y-2 text-[#384151]">
+              {content[language].intro.map((item, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="mr-2">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            
+            {/* 联系方式 - 标题与个人简介同样大小 */}
+            <div className="text-[#384151]">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#384151] mb-4">
+                {content[language].contact}
+              </h2>
+              <p className="mb-2">{content[language].wechat}</p>
+              <p>{content[language].email}</p>
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

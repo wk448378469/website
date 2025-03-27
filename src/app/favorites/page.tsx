@@ -1,85 +1,151 @@
 "use client";
 
 import { useLanguage } from '../context/LanguageContext';
+import Image from 'next/image';
+import Footer from '../components/Footer';
 
 export default function Favorites() {
   const { language } = useLanguage();
   
   const content = {
     zh: {
-      title: "我的喜好",
-      underDevelopment: "此页面正在开发中...",
-      comingSoon: "更多内容即将更新",
-      favorites: [
+      categories: [
         {
-          category: "足球",
+          title: "喜欢的球队",
           items: [
-            "每周末参加业余足球比赛",
-            "喜欢看英超、西甲和欧冠比赛",
-            "收藏各种经典足球比赛视频"
+            {
+              name: "皇家马德里",
+              logo: "https://duihui.duoduocdn.com/zuqiu/zq_huangjiamadeli_641365.png"
+            },
+            {
+              name: "洛杉矶湖人",
+              logo: "https://duihui.duoduocdn.com/nba/lq_luoshanjihuren_085572.png"
+            }
           ]
         },
         {
-          category: "电影",
+          title: "喜欢的电影",
           items: [
-            "热爱独立电影和艺术电影",
-            "喜欢研究电影叙事和摄影技巧",
-            "梦想有一天能拍摄自己的电影作品"
+            {
+              name: "触不可及",
+              cover: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1454261925.webp",
+              link: "https://movie.douban.com/subject/6786002/"
+            },
+            {
+              name: "星际穿越",
+              cover: "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2614988097.webp",
+              link: "https://movie.douban.com/subject/1889243/"
+            },
+            {
+              name: "黑客帝国",
+              cover: "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p451926968.webp",
+              link: "https://movie.douban.com/subject/1291843/"
+            },
+            {
+              name: "超脱",
+              cover: "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p1305562621.webp",
+              link: "https://movie.douban.com/subject/5322596/"
+            }
           ]
         },
         {
-          category: "训狗",
+          title: "喜欢的专辑",
           items: [
-            "研究各种正向训练方法",
-            "参加犬类行为学相关课程",
-            "与爱犬一起参加各种活动"
-          ]
-        },
-        {
-          category: "阅读",
-          items: [
-            "科幻小说（刘慈欣、特德·姜）",
-            "技术书籍和前沿科技文章",
-            "历史和哲学著作"
+            {
+              name: "七里香",
+              cover: "https://img9.doubanio.com/view/subject/m/public/s3737076.jpg",
+              link: "https://music.douban.com/subject/1401853/",
+              artist: "周杰伦"
+            },
+            {
+              name: "闪耀 Stellar Moments",
+              cover: "https://img3.doubanio.com/view/subject/m/public/s35000772.jpg",
+              link: "https://music.douban.com/subject/37107643/",
+              artist: "谢帝"
+            },
+            {
+              name: "黄沙",
+              cover: "https://img9.doubanio.com/view/subject/m/public/s34868276.jpg",
+              link: "https://music.douban.com/subject/36901177/",
+              artist: "王恩喆Echo"
+            },
+            {
+              name: "别怕变老",
+              cover: "https://img3.doubanio.com/view/subject/m/public/s34013687.jpg",
+              link: "https://music.douban.com/subject/35621138/",
+              artist: "艾热 / 王以太"
+            }
           ]
         }
       ]
     },
     en: {
-      title: "My Favorites",
-      underDevelopment: "This page is under development...",
-      comingSoon: "More content coming soon",
-      favorites: [
+      categories: [
         {
-          category: "Football",
+          title: "Favorite Teams",
           items: [
-            "Participate in amateur football matches every weekend",
-            "Enjoy watching Premier League, La Liga, and Champions League",
-            "Collect videos of various classic football matches"
+            {
+              name: "Real Madrid",
+              logo: "https://duihui.duoduocdn.com/zuqiu/zq_huangjiamadeli_641365.png"
+            },
+            {
+              name: "LA Lakers",
+              logo: "https://duihui.duoduocdn.com/nba/lq_luoshanjihuren_085572.png"
+            }
           ]
         },
         {
-          category: "Movies",
+          title: "Favorite Movies",
           items: [
-            "Love independent and art films",
-            "Interested in studying film narrative and cinematography",
-            "Dream of shooting my own films someday"
+            {
+              name: "The Intouchables",
+              cover: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1454261925.webp",
+              link: "https://movie.douban.com/subject/6786002/"
+            },
+            {
+              name: "Interstellar",
+              cover: "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2614988097.webp",
+              link: "https://movie.douban.com/subject/1889243/"
+            },
+            {
+              name: "The Matrix",
+              cover: "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p451926968.webp",
+              link: "https://movie.douban.com/subject/1291843/"
+            },
+            {
+              name: "Detachment",
+              cover: "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p1305562621.webp",
+              link: "https://movie.douban.com/subject/5322596/"
+            }
           ]
         },
         {
-          category: "Dog Training",
+          title: "Favorite Albums",
           items: [
-            "Research various positive training methods",
-            "Take courses related to canine behavior",
-            "Participate in various activities with my dog"
-          ]
-        },
-        {
-          category: "Reading",
-          items: [
-            "Science fiction (Liu Cixin, Ted Chiang)",
-            "Technical books and cutting-edge technology articles",
-            "Historical and philosophical works"
+            {
+              name: "Common Jasmine Orange",
+              cover: "https://img9.doubanio.com/view/subject/m/public/s3737076.jpg",
+              link: "https://music.douban.com/subject/1401853/",
+              artist: "Jay Chou"
+            },
+            {
+              name: "Stellar Moments",
+              cover: "https://img3.doubanio.com/view/subject/m/public/s35000772.jpg",
+              link: "https://music.douban.com/subject/37107643/",
+              artist: "Boss Shady"
+            },
+            {
+              name: "Yellow Sand",
+              cover: "https://img9.doubanio.com/view/subject/m/public/s34868276.jpg",
+              link: "https://music.douban.com/subject/36901177/",
+              artist: "Wang Enzhe Echo"
+            },
+            {
+              name: "Don't Be Afraid of Getting Old",
+              cover: "https://img3.doubanio.com/view/subject/m/public/s34013687.jpg",
+              link: "https://music.douban.com/subject/35621138/",
+              artist: "AIR / Wang Yitai"
+            }
           ]
         }
       ]
@@ -87,38 +153,64 @@ export default function Favorites() {
   };
 
   return (
-    <div className="min-h-screen bg-white px-4 py-8 md:py-16">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#384151] mb-8">
-          {content[language].title}
-        </h1>
-        
-        <div className="bg-yellow-100 p-4 rounded-lg mb-8 text-center">
-          <p className="text-yellow-800 font-medium">
-            {content[language].underDevelopment}
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {content[language].favorites.map((favorite, index) => (
-            <div key={index} className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-semibold text-[#384151] mb-4">{favorite.category}</h3>
-              <ul className="space-y-2">
-                {favorite.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="flex items-start">
-                    <span className="mr-2 text-blue-500">•</span>
-                    <span className="text-gray-600">{item}</span>
-                  </li>
+    <div className="min-h-screen bg-white flex flex-col">
+      <div className="flex-1 px-4 py-12">
+        <div className="max-w-6xl mx-auto space-y-16">
+          {content[language].categories.map((category, index) => (
+            <section key={index} className="space-y-6">
+              <h2 className="text-2xl font-bold text-[#384151]">{category.title}</h2>
+              
+              <div className={`grid gap-6 ${
+                category.title.includes("球队") || category.title.includes("Teams") 
+                  ? "grid-cols-2 md:grid-cols-2" 
+                  : "grid-cols-2 md:grid-cols-4"
+              }`}>
+                {category.items.map((item, idx) => (
+                  <a 
+                    key={idx}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block"
+                  >
+                    <div className={`relative overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow ${
+                      category.title.includes("球队") || category.title.includes("Teams")
+                        ? "w-32 h-32 mx-auto"
+                        : "aspect-square"
+                    }`}>
+                      {/* 根据类别使用不同的图片组件 */}
+                      {category.title.includes("球队") || category.title.includes("Teams") ? (
+                        <Image
+                          src={item.logo}
+                          alt={item.name}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 768px) 100vw, 128px"
+                        />
+                      ) : (
+                        <img
+                          src={`/api/image-proxy?url=${encodeURIComponent(item.cover)}`}
+                          alt={item.name}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
+                    </div>
+                    <div className="mt-2 text-center">
+                      <h3 className="font-medium text-[#384151] group-hover:text-blue-600 transition-colors">
+                        {item.name}
+                      </h3>
+                      {item.artist && (
+                        <p className="text-sm text-gray-500">{item.artist}</p>
+                      )}
+                    </div>
+                  </a>
                 ))}
-              </ul>
-            </div>
+              </div>
+            </section>
           ))}
         </div>
-        
-        <div className="mt-12 text-center text-gray-500 italic">
-          {content[language].comingSoon}
-        </div>
       </div>
+      <Footer />
     </div>
   );
 }
