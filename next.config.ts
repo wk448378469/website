@@ -1,14 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',
   images: {
-    domains: [
-      'duihui.duoduocdn.com',
-      'img9.doubanio.com',
-      'img3.doubanio.com',
-      'img1.doubanio.com',
-      'img2.doubanio.com'
+    unoptimized: true,  // 使用未优化的图片处理
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.doubanio.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'duihui.duoduocdn.com',
+      },
     ],
   }
 };

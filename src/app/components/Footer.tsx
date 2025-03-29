@@ -1,11 +1,8 @@
 "use client";
 
 import Link from 'next/link';
-import { useLanguage } from '../context/LanguageContext';
 
 export default function Footer() {
-  const { language } = useLanguage();
-
   return (
     <footer className="w-full py-4 mt-auto bg-white border-t">
       <div className="max-w-6xl mx-auto px-4 text-center">

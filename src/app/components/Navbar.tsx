@@ -18,8 +18,12 @@ const Navbar = () => {
     en: ['Home', 'Services', 'Projects', 'Favorites']
   };
   
-  // 页面路径映射表 - 确保每个导航项都有对应的路径
-  const pathMap = {
+  // 添加类型定义
+  type PathMapType = {
+    [key: string]: string;
+  };
+  
+  const pathMap: PathMapType = {
     '首页': '/',
     'Home': '/',
     '服务': '/services',
@@ -30,14 +34,8 @@ const Navbar = () => {
     'Favorites': '/favorites'
   };
   
-  // 修改 getHref 函数确保它正确使用 pathMap
   const getHref = (item: string): string => {
-    // 确认该项在映射表中存在
-    if (item in pathMap) {
-      return pathMap[item];
-    }
-    // 如果不在映射表中，则将英文转为小写作为路径（兜底方案）
-    return `/${item.toLowerCase()}`;
+    return pathMap[item] || `/${item.toLowerCase()}`;
   };
   
   return (
@@ -64,16 +62,16 @@ const Navbar = () => {
       {/* Right section - Social icons and language toggle */}
       <div className="flex items-center space-x-4">
         <div className="hidden md:flex items-center space-x-5">
-          <a href="https://bilibili.com" target="_blank" rel="noopener noreferrer" className="text-[#384151] hover:text-[#FB7299]">
+          <a href="https://space.bilibili.com/32017655?spm_id_from=333.1007.0.0" target="_blank" rel="noopener noreferrer" className="text-[#384151] hover:text-[#FB7299]">
             <SiBilibili size={22} />
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-[#384151] hover:text-black">
+          <a href="https://github.com/wk448378469" target="_blank" rel="noopener noreferrer" className="text-[#384151] hover:text-black">
             <FaGithub size={20} />
           </a>
-          <a href="https://weibo.com" target="_blank" rel="noopener noreferrer" className="text-[#384151] hover:text-red-500">
+          <a href="https://weibo.com/u/1947006433" target="_blank" rel="noopener noreferrer" className="text-[#384151] hover:text-red-500">
             <FaWeibo size={20} />
           </a>
-          <a href="https://xiaohongshu.com" target="_blank" rel="noopener noreferrer" className="text-[#384151] hover:text-red-600">
+          <a href="https://www.xiaohongshu.com/user/profile/630454ef000000000f007e48" target="_blank" rel="noopener noreferrer" className="text-[#384151] hover:text-red-600">
             <SiXiaohongshu size={20} />
           </a>
         </div>

@@ -4,10 +4,38 @@ import { useLanguage } from '../context/LanguageContext';
 import Image from 'next/image';
 import Footer from '../components/Footer';
 
+// 定义类型接口
+interface TeamItem {
+  name: string;
+  logo: string;
+}
+
+interface MovieItem {
+  name: string;
+  cover: string;
+  link: string;
+}
+
+interface AlbumItem {
+  name: string;
+  cover: string;
+  link: string;
+  artist: string;
+}
+
+interface Category {
+  title: string;
+  items: TeamItem[] | MovieItem[] | AlbumItem[];
+}
+
+interface Content {
+  categories: Category[];
+}
+
 export default function Favorites() {
   const { language } = useLanguage();
   
-  const content = {
+  const content: Record<string, Content> = {
     zh: {
       categories: [
         {
@@ -168,7 +196,7 @@ export default function Favorites() {
                 {category.items.map((item, idx) => (
                   <a 
                     key={idx}
-                    href={item.link}
+                    href={(item as MovieItem | AlbumItem).link || '#'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group block"
@@ -178,19 +206,23 @@ export default function Favorites() {
                         ? "w-32 h-32 mx-auto"
                         : "aspect-square"
                     }`}>
-                      {/* 根据类别使用不同的图片组件 */}
+                      {/* 使用免费CDN代理服务 */}
                       {category.title.includes("球队") || category.title.includes("Teams") ? (
                         <Image
-                          src={item.logo}
+                          src={`https://images.weserv.nl/?url=${encodeURIComponent((item as TeamItem).logo)}`}
                           alt={item.name}
                           fill
+                          unoptimized
                           className="object-contain"
                           sizes="(max-width: 768px) 100vw, 128px"
                         />
                       ) : (
-                        <img
-                          src={`/api/image-proxy?url=${encodeURIComponent(item.cover)}`}
+                        <Image
+                          src={`https://images.weserv.nl/?url=${encodeURIComponent((item as MovieItem | AlbumItem).cover)}`}
                           alt={item.name}
+                          width={200}
+                          height={300}
+                          unoptimized
                           className="w-full h-full object-cover"
                         />
                       )}
@@ -199,8 +231,8 @@ export default function Favorites() {
                       <h3 className="font-medium text-[#384151] group-hover:text-blue-600 transition-colors">
                         {item.name}
                       </h3>
-                      {item.artist && (
-                        <p className="text-sm text-gray-500">{item.artist}</p>
+                      {'artist' in item && (
+                        <p className="text-sm text-gray-500">{(item as AlbumItem).artist}</p>
                       )}
                     </div>
                   </a>

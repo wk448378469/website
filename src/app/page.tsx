@@ -40,41 +40,46 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <div className="flex-1 px-4 py-8 md:py-16">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16">
-          {/* 左侧头像 - 更大的正方形带圆角 */}
-          <div className="w-56 h-56 md:w-80 md:h-80 flex-shrink-0 relative">
+      <div className="flex-1 px-4 py-12 md:py-20">
+        {/* 调整最大宽度和内容间距 */}
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-12 md:gap-32">
+          {/* 左侧头像 - 增大尺寸并调整位置 */}
+          <div className="w-56 h-56 md:w-96 md:h-96 flex-shrink-0 relative mx-auto md:mx-0 md:sticky md:top-8 md:-ml-8">
             <Image
-              src="/aaa.png"
+              src="/profile_avatar.jpg"
               alt="Profile Avatar"
               fill
-              className="rounded-2xl object-cover shadow-lg"
+              className="rounded-3xl object-cover shadow-lg"
               priority
             />
           </div>
           
-          {/* 右侧文字区域 */}
-          <div className="flex-1">
-            <h1 className="text-2xl md:text-3xl font-bold text-[#384151] mb-4">
-              {content[language].name}
-            </h1>
+          {/* 右侧文字区域 - 改善间距和排版 */}
+          <div className="flex-1 space-y-12">
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold text-[#384151] mb-8">
+                {content[language].name}
+              </h1>
+              
+              <ul className="space-y-4 text-lg text-gray-600">
+                {content[language].intro.map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="mr-3 text-blue-500">•</span>
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
             
-            <ul className="mb-8 space-y-2 text-[#384151]">
-              {content[language].intro.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            
-            {/* 联系方式 - 标题与个人简介同样大小 */}
-            <div className="text-[#384151]">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#384151] mb-4">
+            {/* 联系方式区域 */}
+            <div className="pt-8 border-t border-gray-100">
+              <h2 className="text-2xl font-bold text-[#384151] mb-6">
                 {content[language].contact}
               </h2>
-              <p className="mb-2">{content[language].wechat}</p>
-              <p>{content[language].email}</p>
+              <div className="space-y-3 text-lg text-gray-600">
+                <p>{content[language].wechat}</p>
+                <p>{content[language].email}</p>
+              </div>
             </div>
           </div>
         </div>
