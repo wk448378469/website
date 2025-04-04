@@ -10,16 +10,16 @@ export default function Projects() {
     zh: {
       projects: [
         {
-          title: "个人网站",
-          description: "基于 Next.js 框架打造的个人网站，采用响应式设计实现多端适配，支持中英双语切换。",
-          technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-          status: "完成"
+          title: "AI旅行规划",
+          description: "基于大语言模型的智能旅行规划助手，根据用户兴趣和预算自动生成个性化旅行方案，支持景点推荐和行程优化",
+          technologies: ["Python", "微信小程序", "大语言模型", "地图API"],
+          status: "开发中"
         },
         {
           title: "足球场图鉴",
           description: "一个专注于发现和分享城市足球场地的小程序。不只是一个场地地图，更是一个连接球员与场地的桥梁。",
           technologies: ["微信小程序", "Python", "MongoDB"],
-          status: "开发中"
+          status: "筹备中"
         },
         {
           title: "同读计划",
@@ -32,16 +32,16 @@ export default function Projects() {
     en: {
       projects: [
         {
-          title: "Personal Website",
-          description: "A personal website built with Next.js, featuring responsive design, bilingual support.",
-          technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-          status: "Completed"
+          title: "AI Travel Planner",
+          description: "An intelligent travel planning assistant based on large language models, automatically generating personalized travel plans according to user interests and budgets, supporting attraction recommendations and itinerary optimization.",
+          technologies: ["Python", "WeChat Mini Program", "LLM", "Map API"],
+          status: "In Development"
         },
         {
           title: "Football Field Guide",
           description: "A WeChat Mini Program focused on discovering and sharing urban football fields. More than just a venue map, it's a bridge connecting players with playing fields.",
           technologies: ["WeChat Mini Program", "Python", "MongoDB"],
-          status: "In Development"
+          status: "In Planning"
         },
         {
           title: "Read Together Project",
